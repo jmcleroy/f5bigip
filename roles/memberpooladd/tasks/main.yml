@@ -4,7 +4,7 @@
       server: "{{ server }}"
       user: "{{ user }}"
       password: "{{ password }}"
-      state: "present"
+      state: "absent"
       pool: "{{ pool_name }}"
       partition: "Common"
       host: "{{ host_ip }}"
