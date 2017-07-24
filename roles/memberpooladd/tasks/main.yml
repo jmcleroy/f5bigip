@@ -9,7 +9,6 @@
       partition: "Common"
       host: "{{ host_ip }}"
       port: 80
-      description: "{{ member_descr }}"
       connection_limit: 100
       rate_limit: 50
       ratio: 2
