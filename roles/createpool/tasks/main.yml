@@ -1,0 +1,11 @@
+---
+- name: Create pool
+  bigip_pool:
+      server: "{{ server }}"
+      user: "{{ user }}"
+      password: "{{ password }}"
+      state: "present"
+      name: "{{ pool_name }}"
+      partition: "Common"
+      lb_method: "least_connection_member"
+      slow_ramp_time: 120
