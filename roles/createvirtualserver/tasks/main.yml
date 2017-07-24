@@ -5,7 +5,6 @@
       user: "{{ user }}"
       password: "{{ password }}"
       state: present
-      partition: MyPartition
       name: "{{ virtual_server_name }}"
       destination: "{{ vip_address}}"
       port: 443
