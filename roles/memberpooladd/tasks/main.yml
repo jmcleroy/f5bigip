@@ -1,0 +1,15 @@
+---
+- name: Add pool member
+  bigip_pool_member:
+      server: "{{ server }}"
+      user: "{{ user }}"
+      password: "{{ password }}"
+      state: "present"
+      pool: "{{ pool_name }}"
+      partition: "Common"
+      host: "{{ host_ip }}"
+      port: 80
+      description: "{{ member_descr }}"
+      connection_limit: 100
+      rate_limit: 50
+      ratio: 2
