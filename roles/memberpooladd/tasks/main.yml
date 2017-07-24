@@ -8,6 +8,7 @@
       pool: "{{ pool_name }}"
       partition: "Common"
       host: "{{ host_ip }}"
+      name: "{{ member_name }}"
       port: 80
       connection_limit: 100
       rate_limit: 50
