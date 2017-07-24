@@ -4,4 +4,4 @@
   connection: local
 
   roles:
-  - createnodemember
+  - memberpooladd
