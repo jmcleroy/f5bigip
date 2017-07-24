@@ -1,5 +1,5 @@
 ---
-- name: Force node offline
+- name: Enable node pool member
   bigip_node:
       server: "{{ server }}"
       state: "present"
