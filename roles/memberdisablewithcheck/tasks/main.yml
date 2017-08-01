@@ -9,7 +9,7 @@
 
 - name: set nodecount fact
   set_fact:
-    nodecount: '{{ pool['/Common/' + pool_name + 'active_member_count'] }}'
+    nodecount: '{{ pool['/Common/test].active_member_count }}'
 
 
 
