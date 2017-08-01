@@ -12,7 +12,7 @@
   #  nodecount: "{{ pool['/Common/*'].active_member_count }}"
 
 - set_fact:
-    pool_path: "'/Common/{{ pool_name }}'"
+    pool_path: '/Common/{{ pool_name }}'
 
 
 - name: Disable node pool member
@@ -26,4 +26,4 @@
     partition: "Common"
     host: "{{ host_ip}}"
     name: "{{ member_name }}"
-  when: pool[{{ pool_path }}].active_member_count >= 2
+  when: pool['{{ pool_path }}'].active_member_count >= 2
