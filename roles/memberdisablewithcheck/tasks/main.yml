@@ -7,9 +7,9 @@
     include: "pool"
     filter: "{{ pool_name }}"
 
-- name: set nodecount fact
-  set_fact:
-    nodecount: "{{ pool['/Common/*'].active_member_count }}"
+#- name: set nodecount fact
+ # set_fact:
+  #  nodecount: "{{ pool['/Common/*'].active_member_count }}"
 
 
 
