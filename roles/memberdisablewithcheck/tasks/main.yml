@@ -24,4 +24,4 @@
     partition: "Common"
     host: "{{ host_ip}}"
     name: "{{ member_name }}"
-  when: '*.active_member_count >=2'
+  when: 'pool[0].active_member_count >=2'
