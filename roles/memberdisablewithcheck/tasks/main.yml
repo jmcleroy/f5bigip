@@ -4,8 +4,8 @@
     server: "192.168.1.100"
     user: "admin"
     password: "admin"
-    include: "{{ pool_name }}"
-    filter: "test"
+    include: "pool"
+    filter: "{{ pool_name }}"
 
 - name: set nodecount fact
   set_fact:
