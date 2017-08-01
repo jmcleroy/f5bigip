@@ -24,4 +24,4 @@
     partition: "Common"
     host: "{{ host_ip}}"
     name: "{{ member_name }}"
-  when: pool['/Common/wordpressapplecluster'].active_member_count >=2
+  when: pool['/Common/wordpressclusterapple'].active_member_count >=2
