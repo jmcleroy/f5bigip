@@ -2,10 +2,10 @@
 - name: Collect BIG-IP facts
   bigip_facts:
     server: "192.168.1.100"
-      user: "admin"
-      password: "admin"
-      include: "{{ pool_name }}"
-      filter: "test"
+    user: "admin"
+    password: "admin"
+    include: "{{ pool_name }}"
+    filter: "test"
 
 - name: set nodecount fact
   set_fact:
