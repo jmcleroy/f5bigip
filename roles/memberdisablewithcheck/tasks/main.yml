@@ -24,4 +24,4 @@
     partition: "Common"
     host: "{{ host_ip}}"
     name: "{{ member_name }}"
-  when: nodecount < 1
+  when: pool['/Common/"{{ pool_name }}"'].active_member_count >=2
