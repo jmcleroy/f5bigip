@@ -7,9 +7,9 @@
     include: "pool"
     filter: "{{ pool_name }}"
 
-- name: set nodecount fact
-  set_fact:
-    nodecount: "{{ pool['/Common/wordpressclusterapple'].active_member_count }}"
+#- name: set nodecount fact
+ # set_fact:
+  #  nodecount: "{{ pool['/Common/*'].active_member_count }}"
 
 
 
@@ -24,4 +24,4 @@
     partition: "Common"
     host: "{{ host_ip}}"
     name: "{{ member_name }}"
-  when: pool.find('active_member_count') >=2
+  when: pool['/Common/{{ pool_name }}'].active_member_count >=2
