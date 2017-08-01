@@ -1,6 +1,6 @@
 ---
 - name: Collect BIG-IP facts
-    bigip_facts:
+  bigip_facts:
     server: "192.168.1.100"
       user: "admin"
       password: "admin"
@@ -9,7 +9,7 @@
 
 - name: set nodecount fact
   set_fact:
-    nodecount: "{{ pool['/Common/'].active_member_count }}"
+    nodecount: "{{ pool['/Common/{{ pool_name }}'].active_member_count }}"
 
 
 
@@ -24,4 +24,4 @@
     partition: "Common"
     host: "{{ host_ip}}"
     name: "{{ member_name }}"
-  when: pool['/Common/'].active_member_count >=2
+  when: pool['/Common/{{ pool_name }}'].active_member_count >=2
