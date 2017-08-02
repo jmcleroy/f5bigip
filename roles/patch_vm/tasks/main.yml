@@ -1,5 +1,5 @@
 ---
 - name: Patch the system
   yum:
-    name: *
+    name: yum
     state: latest
