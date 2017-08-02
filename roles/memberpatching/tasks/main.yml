@@ -25,7 +25,7 @@
 
 - name: Patch the system
   command: yum update yum
-  delegate_to: {{ host_ip1 }}
+  delegate_to: "{{ host_ip1 }}"
 
 - name: Enable node pool member
   bigip_node:
@@ -54,7 +54,7 @@
 
 - name: Patch the system
   command: yum update yum
-  delegate_to: {{ host_ip2 }}
+  delegate_to: "{{ host_ip2 }}"
 
 - name: Enable node pool member
   bigip_node:
