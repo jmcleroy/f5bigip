@@ -24,10 +24,8 @@
   when: pool['{{ pool_path }}'].active_member_count >= 2
 
 - name: Patch the system
-  yum:
-  host: "{{ host_ip1 }}"
-    name: yum
-    state: latest
+  command: yum update yum
+  delegate_to: {{ host_ip1 }}
 
 - name: Enable node pool member
   bigip_node:
