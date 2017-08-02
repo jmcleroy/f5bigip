@@ -27,6 +27,7 @@
   yum:
     name: yum
     state: latest
+  delegate_to: "{{ host_ip1 }}"
 
 - name: Enable node pool member
   bigip_node:
@@ -57,6 +58,7 @@
   yum:
     name: yum
     state: latest
+  delegate_to: "{{ host_ip2 }}"
 
 - name: Enable node pool member
   bigip_node:
