@@ -24,7 +24,9 @@
   when: pool['{{ pool_path }}'].active_member_count >= 2
 
 - name: Patch the system
-  command: yum update yum -y
+  yum:
+    name: yum
+    state: latest
 
 - name: Enable node pool member
   bigip_node:
@@ -52,7 +54,9 @@
   when: pool['{{ pool_path }}'].active_member_count >= 2
 
 - name: Patch the system
-  command: yum update yum -y
+  yum:
+    name: yum
+    state: latest
 
 - name: Enable node pool member
   bigip_node:
