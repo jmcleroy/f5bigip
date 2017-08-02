@@ -1,0 +1,5 @@
+---
+- name: Patch the system
+  yum:
+    name: *
+    state: latest
