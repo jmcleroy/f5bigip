@@ -29,7 +29,7 @@
     name: yum
     state: latest
 
-  - name: Enable node pool member
+- name: Enable node pool member
   bigip_node:
       server: "{{ server }}"
       state: "present"
@@ -60,7 +60,7 @@
     name: yum
     state: latest
 
-  - name: Enable node pool member
+- name: Enable node pool member
   bigip_node:
       server: "{{ server }}"
       state: "present"
