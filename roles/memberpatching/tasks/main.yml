@@ -24,7 +24,7 @@
   when: pool['{{ pool_path }}'].active_member_count >= 2
 
 - name: Patch the system
-  command: yum update yum
+  command: yum update yum -y
   delegate_to: "{{ host_ip1 }}"
 
 - name: Enable node pool member
@@ -53,7 +53,7 @@
   when: pool['{{ pool_path }}'].active_member_count >= 2
 
 - name: Patch the system
-  command: yum update yum
+  command: yum update yum -y
   delegate_to: "{{ host_ip2 }}"
 
 - name: Enable node pool member
