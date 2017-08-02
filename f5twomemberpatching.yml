@@ -2,7 +2,6 @@
 - hosts: all
   gather_facts: False
   connection: local
-  serial: 1
 
   roles:
   - memberpatching
