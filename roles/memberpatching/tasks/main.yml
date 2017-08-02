@@ -19,15 +19,15 @@
     session_state: "disabled"
     monitor_state: "disabled"
     partition: "Common"
-    host: "{{ inventory_hostname }}"
-#    name: "{{ member_name1 }}"
+    host: "{{ host_ip1}}"
+    name: "{{ member_name1 }}"
   when: pool['{{ pool_path }}'].active_member_count >= 2
 
 - name: Patch the system
   yum:
     name: yum
     state: latest
-#  delegate_to: "{{ host_ip1 }}"
+  delegate_to: "{{ host_ip1 }}"
 
 - name: Enable node pool member
   bigip_node:
@@ -38,6 +38,36 @@
       session_state: "enabled"
       monitor_state: "enabled"
       partition: "Common"
-      host: "{{ inventory_hostname }}"
-#      name: "{{ member_name1 }}"
+      host: "{{ host_ip1 }}"
+      name: "{{ member_name1 }}"
 
+- name: Disable node pool member
+  bigip_node:
+    server: "{{ server }}"
+    state: "present"
+    user: "{{ user }}"
+    password: "{{ password }}"
+    session_state: "disabled"
+    monitor_state: "disabled"
+    partition: "Common"
+    host: "{{ host_ip2}}"
+    name: "{{ member_name2 }}"
+  when: pool['{{ pool_path }}'].active_member_count >= 2
+
+- name: Patch the system
+  yum:
+    name: yum
+    state: latest
+  delegate_to: "{{ host_ip2 }}"
+
+- name: Enable node pool member
+  bigip_node:
+      server: "{{ server }}"
+      state: "present"
+      user: "{{ user }}"
+      password: "{{ password }}"
+      session_state: "enabled"
+      monitor_state: "enabled"
+      partition: "Common"
+      host: "{{ host_ip2 }}"
+      name: "{{ member_name2 }}"
