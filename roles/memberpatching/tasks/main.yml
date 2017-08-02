@@ -25,7 +25,7 @@
 
 - name: Patch the system
   yum:
-    host: "{{ host_ip1 }}"
+  host: "{{ host_ip1 }}"
     name: yum
     state: latest
 
@@ -56,7 +56,7 @@
 
 - name: Patch the system
   yum:
-    host: "{{ host_ip2 }}"
+  host: "{{ host_ip2 }}"
     name: yum
     state: latest
 
