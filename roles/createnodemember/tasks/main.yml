@@ -2,8 +2,8 @@
 - name: Add node
   bigip_node:
       server: "{{ server }}"
-      user: "{{ f5user }}"
-      password: "{{ f5password }}"
+      user: "{{ username }}"
+      password: "{{ password }}"
       state: "present"
       partition: "Common"
       host: "{{ host_ip }}"
