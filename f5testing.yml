@@ -39,7 +39,7 @@
         name: "{{ item.name }}"
         user: "admin"
         password: "admin"
-        pool: "Ansible-web"
+        pool: "Ansible_web"
         port: "80"
         server: 192.168.1.100
         validate_certs: "no"
