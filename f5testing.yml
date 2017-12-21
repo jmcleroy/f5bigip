@@ -7,7 +7,7 @@
     - name: Create a pool
       bigip_pool:
         lb_method: "ratio_member"
-        name: "Ansible_test01"
+        name: "Ansible_web"
         user: "admin"
         password: "admin"
         server: 192.168.1.100
