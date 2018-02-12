@@ -1,1 +1,15 @@
-#Adding as needed
+galaxy_info:
+  author: Eric McLeroy 
+  description: F5 BigIP Examples
+  company: Red Hat
+
+#  video_links:
+#  - url: https://youtu.be/7FphWEFQbac
+#    title: Ansible Netowrking 101
+
+  license: license (GPLv2, CC-BY, etc)
+
+  platforms:
+  - name: F5 BigIP
+    versions:
+    - 12.0+
