@@ -1,9 +1,9 @@
 ---
 - name: Add pool member
   bigip_pool_member:
-      server: "{{ server }}"
-      user: "{{ user }}"
-      password: "{{ password }}"
+      server: "{{ inventory_hostname }}"
+#      user: "{{ user }}"
+#      password: "{{ password }}"
       state: "present"
       pool: "{{ pool_name }}"
       partition: "Common"
@@ -13,3 +13,4 @@
       connection_limit: 100
       rate_limit: 50
       ratio: 2
+      validate_certs: "no"
