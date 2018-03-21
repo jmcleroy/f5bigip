@@ -10,3 +10,4 @@
       port: 443
       pool: "{{ pool_name }}"
       snat: Automap
+      validate_certs: "no"
