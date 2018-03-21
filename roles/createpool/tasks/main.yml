@@ -1,9 +1,9 @@
 ---
 - name: Create pool
   bigip_pool:
-      server: "{{ server }}"
-      user: "{{ user }}"
-      password: "{{ password }}"
+      server: "{{ inventory_hostname }}"
+#      user: "{{ user }}"
+#      password: "{{ password }}"
       state: "present"
       name: "{{ pool_name }}"
       partition: "Common"
