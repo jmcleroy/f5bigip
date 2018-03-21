@@ -6,7 +6,7 @@
 #      password: "{{ password }}"
       state: present
       name: "{{ virtual_server_name }}"
-      destination: "{{ vip_address}}"
+      destination: "{{ vip_address }}"
       port: 443
       pool: "{{ pool_name }}"
       snat: Automap
