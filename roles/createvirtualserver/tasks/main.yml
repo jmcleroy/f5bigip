@@ -2,8 +2,8 @@
 - name: Add virtual server
   bigip_virtual_server:
       server: "{{ inventory_hostname }}"
-      user: "{{ user }}"
-      password: "{{ password }}"
+#      user: "{{ user }}"
+#      password: "{{ password }}"
       state: present
       name: "{{ virtual_server_name }}"
       destination: "{{ vip_address}}"
