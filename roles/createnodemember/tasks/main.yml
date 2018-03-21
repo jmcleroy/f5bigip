@@ -1,7 +1,7 @@
 ---
 - name: Add node
   bigip_node:
-      server: "{{ server }}"
+      server: "{{ inventory_hostname }}"
 #      user: "{{ username }}"
 #      password: "{{ F5_PASSWORD }}"
       state: "present"
