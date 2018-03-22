@@ -1,9 +1,7 @@
 ---
 - name: Collect BIG-IP facts
   bigip_facts:
-    server: "192.168.1.100"
-    user: "admin"
-    password: "admin"
+    server: "{{ inventory_hostname }}"
     include: "pool"
     filter: "{{ pool_name }}"
 
@@ -12,10 +10,8 @@
 
 - name: Disable node pool member
   bigip_node:
-    server: "{{ server }}"
+    server: "{{ inventory_hostname }}"
     state: "present"
-    user: "{{ user }}"
-    password: "{{ password }}"
     session_state: "disabled"
     monitor_state: "disabled"
     partition: "Common"
@@ -31,10 +27,8 @@
 
 - name: Enable node pool member
   bigip_node:
-      server: "{{ server }}"
+      server: "{{ inventory_hostname }}"
       state: "present"
-      user: "{{ user }}"
-      password: "{{ password }}"
       session_state: "enabled"
       monitor_state: "enabled"
       partition: "Common"
@@ -43,10 +37,8 @@
 
 - name: Disable node pool member
   bigip_node:
-    server: "{{ server }}"
+    server: "{{ inventory_hostname }}"
     state: "present"
-    user: "{{ user }}"
-    password: "{{ password }}"
     session_state: "disabled"
     monitor_state: "disabled"
     partition: "Common"
@@ -62,10 +54,8 @@
 
 - name: Enable node pool member
   bigip_node:
-      server: "{{ server }}"
+      server: "{{ inventory_hostname }}"
       state: "present"
-      user: "{{ user }}"
-      password: "{{ password }}"
       session_state: "enabled"
       monitor_state: "enabled"
       partition: "Common"
