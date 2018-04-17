@@ -13,3 +13,4 @@
         name: "{{ member_name }}"
         monitors:
           - /Common/icmp
+        validate_certs: false
