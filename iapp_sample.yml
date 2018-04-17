@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: False
+  connection: local
+
+  tasks:
+    - name: Check {{ appsvcs_ver }} isn't already there
+      connection: local
+      gather_facts: no
+      hosts: bigips
+      tasks:
+        - name: Get the templates
+          uri:
+            url: https://{{inventory_hostname}}/mgmt/tm/cloud/templates/iapp/
+            validate_certs: no
+            return_content: yes
+          register: iapps_list

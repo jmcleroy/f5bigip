@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: False
+  connection: local
+
+  tasks:
+  - name: Add node
+    bigip_node:
+        server: "{{ inventory_hostname }}"
+        state: "present"
+        partition: "Common"
+        host: "{{ host_ip }}"
+        name: "{{ member_name }}"
+        monitors:
+          - /Common/icmp
