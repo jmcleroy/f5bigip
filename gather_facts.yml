@@ -7,3 +7,4 @@
     - name: Collect BIG-IP facts
       bigip_facts:
         server: "{{ inventory_hostname }}"
+        include: device
