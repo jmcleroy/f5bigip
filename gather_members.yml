@@ -28,13 +28,23 @@
 #  - set_fact:
 #       myfact: "{{ members | from_json }}"
 
-  - set_fact:
-      msg: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
-    loop: "{{members}}"
+#  - set_fact:
+#      hostip: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
+#    loop: "{{members}}"
 
-
-
+#  - debug:
+#      msg: "{{ hostip }}"
 #  - name: set hostname fact
 #    set_fact:
 #      node_members: '{{ members | "regex_search(+s)" }}'
 #      node_members: '{{ members | regex_search(?<=address": "/Common/)(.*)" }}'
+
+  - name: add hosts from member addresses
+    add_host:
+      name: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
+      groups: webservers
+    loop: "{{members}}"
+
+  - name: check debug
+    debug:
+      msg: "{{inventory_hostname}}"
