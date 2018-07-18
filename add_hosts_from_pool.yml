@@ -32,8 +32,6 @@
       msg: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
     loop: "{{members}}"
 
-
-
 #  - name: set hostname fact
 #    set_fact:
 #      node_members: '{{ members | "regex_search(+s)" }}'
