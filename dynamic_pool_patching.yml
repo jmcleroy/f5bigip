@@ -1,0 +1,75 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Collect BIG-IP facts
+    bigip_facts:
+      user: admin
+      password: admin
+      server: "192.168.1.89"
+      include: "pool"
+      filter: "webservers"
+      validate_certs: no
+    register: "poolmembers"
+
+  - set_fact:
+      pool_path: /Common/webservers
+
+  - name: set member facts
+    set_fact:
+      members: '{{ ansible_facts.pool["/Common/webservers"].member }}'
+
+  - name: add hosts from member addresses
+    add_host:
+      name: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
+      groups: webservers
+    loop: "{{members}}"
+
+- hosts: webservers
+  gather_facts: no
+  serial: 1
+
+  tasks:
+  - name: Collect BIG-IP facts
+    bigip_facts:
+      user: admin
+      password: admin
+      server: "192.168.1.89"
+      include: "pool"
+      filter: "webservers"
+      validate_certs: no
+    delegate_to: localhost
+    register: "poolmembers"
+
+  - set_fact:
+      pool_path: /Common/webservers
+
+  - name: Disable node pool member
+    bigip_node:
+      server: "192.168.1.89"
+      user: admin
+      password: admin
+      state: "present"
+      session_state: "disabled"
+      monitor_state: "disabled"
+      partition: "Common"
+      name: "{{ inventory_hostname }}"
+      delegate_to: localhost
+    when: pool['/Common/webservers'].active_member_count >= 2
+
+  - name: Patch the system
+    yum:
+      name: yum
+      state: latest
+    delegate_to: "{{ inventory_hostname }}"
+
+  - name: Enable node pool member
+    bigip_node:
+        server: "192.168.1.89"
+        state: "present"
+        session_state: "enabled"
+        monitor_state: "enabled"
+        partition: "Common"
+        name: "{{ inventory_hostname }}"
