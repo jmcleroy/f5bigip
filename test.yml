@@ -6,7 +6,7 @@
     pool_path: "/Common/{{ poolserver }}"
     poolserver: webservers
     servergroup: webservers
-    lb_server: 192.168.1.189
+    lb_server: 192.168.1.89
 
   tasks:
   - name: Collect BIG-IP facts
@@ -34,7 +34,7 @@
     pool_path: "/Common/{{ poolserver }}"
     poolserver: webservers
     servergourp: webservers
-    lb_server: 192.168.1.189
+    lb_server: 192.168.1.89
 
   tasks:
   - name: Collect BIG-IP facts
