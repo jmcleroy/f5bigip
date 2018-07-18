@@ -6,13 +6,12 @@
     pool_path: "/Common/{{ poolserver }}"
     poolserver: webservers
     servergroup: webservers
+    lb_server: 192.168.1.189
 
   tasks:
   - name: Collect BIG-IP facts
     bigip_facts:
-      user: admin
-      password: admin
-      server: "192.168.1.89"
+      server: "{{ lb_server }}"
       include: "pool"
       filter: "{{ poolserver }}"
       validate_certs: no
@@ -35,13 +34,12 @@
     pool_path: "/Common/{{ poolserver }}"
     poolserver: webservers
     servergourp: webservers
+    lb_server: 192.168.1.189
 
   tasks:
   - name: Collect BIG-IP facts
     bigip_facts:
-      user: admin
-      password: admin
-      server: "192.168.1.89"
+      server: "{{ lb_server }}"
       include: "pool"
       filter: "{{ poolserver }}"
       validate_certs: no
@@ -50,11 +48,8 @@
 
   - name: Disable node pool member
     bigip_node:
-      server: "192.168.1.89"
-      user: admin
-      password: admin
+      server: "{{ lb_server }}"
       state: "disabled"
-      partition: "Common"
       name: "{{ inventory_hostname }}"
       validate_certs: no
     delegate_to: localhost
@@ -68,11 +63,8 @@
 
   - name: Enable node pool member
     bigip_node:
-      server: "192.168.1.89"
-      user: admin
-      password: admin
+      server: "{{ lb_server }}"
       state: "enabled"
-      partition: "Common"
       name: "{{ inventory_hostname }}"
       validate_certs: no
     delegate_to: localhost
