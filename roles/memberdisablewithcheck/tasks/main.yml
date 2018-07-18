@@ -2,8 +2,6 @@
 - name: Collect BIG-IP facts
   bigip_facts:
     server: "192.168.1.100"
-    user: "admin"
-    password: "admin"
     include: "pool"
     filter: "{{ pool_name }}"
 
@@ -15,8 +13,6 @@
   bigip_node:
     server: "{{ server }}"
     state: "present"
-    user: "{{ user }}"
-    password: "{{ password }}"
     session_state: "disabled"
     monitor_state: "disabled"
     partition: "Common"

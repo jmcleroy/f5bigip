@@ -1,0 +1,40 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Collect BIG-IP facts
+    bigip_facts:
+      user: admin
+      password: admin
+      server: "192.168.1.89"
+      include: "pool"
+      filter: "webservers"
+      validate_certs: no
+    register: "poolmembers"
+
+  - set_fact:
+      pool_path: /Common/webservers
+
+  - name: set member facts
+    set_fact:
+      members: '{{ ansible_facts.pool["/Common/webservers"].member }}'
+
+#  - name: debug
+#    debug:
+#      msg: "{{ members }}"
+
+#  - set_fact:
+#       myfact: "{{ members | from_json }}"
+
+  - set_fact:
+      msg: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
+    loop: "{{members}}"
+
+
+
+#  - name: set hostname fact
+#    set_fact:
+#      node_members: '{{ members | "regex_search(+s)" }}'
+#      node_members: '{{ members | regex_search(?<=address": "/Common/)(.*)" }}'

@@ -1,0 +1,38 @@
+---
+- name: Collect BIG-IP facts
+  bigip_facts:
+    server: "192.168.1.89"
+    include: "pool"
+    filter: "webservers"
+  register: "poolmembers"
+
+- set_fact:
+    pool_path: /Common/webservers
+
+- name: Disable node pool member
+  bigip_node:
+    server: "192.168.1.89"
+    state: "present"
+    session_state: "disabled"
+    monitor_state: "disabled"
+    partition: "Common"
+    host: "{{ member_ip }}"
+    name: "{{ inventory_hostname }}"
+  when: pool['{{ pool_path }}'].active_member_count >= 2
+
+- name: Patch the system
+  yum:
+    name: yum
+    state: latest
+  delegate_to: "{{ host_ip1 }}"
+
+- name: Enable node pool member
+  bigip_node:
+      server: "192.168.1.89"
+      state: "present"
+      session_state: "enabled"
+      monitor_state: "enabled"
+      partition: "Common"
+      host: "{{ host_ip1 }}"
+      name: "{{ member_name1 }}"
+
