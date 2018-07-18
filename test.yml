@@ -4,9 +4,6 @@
   connection: local
   vars:
     pool_path: "/Common/{{ poolserver }}"
-    poolserver: webservers
-    servergroup: webservers
-    lb_server: 192.168.1.89
 
   tasks:
   - name: Collect BIG-IP facts
@@ -24,7 +21,7 @@
   - name: add hosts from member addresses
     add_host:
       name: "{{item.address | regex_replace('/Common/(.+)', '\\1')}}"
-      groups: "{{ servergroup }}"
+      groups: "webservers"
     loop: "{{members}}"
 
 - hosts: webservers
@@ -32,9 +29,6 @@
   serial: 1
   vars:
     pool_path: "/Common/{{ poolserver }}"
-    poolserver: webservers
-    servergourp: webservers
-    lb_server: 192.168.1.89
 
   tasks:
   - name: Collect BIG-IP facts
