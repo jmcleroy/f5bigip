@@ -9,6 +9,7 @@
   - name: Collect BIG-IP facts
     bigip_facts:
       server: "{{ lb_server }}"
+      server_port: 443
       include: "pool"
       filter: "{{ poolserver }}"
       validate_certs: no
@@ -47,6 +48,7 @@
       name: "{{ inventory_hostname }}"
       validate_certs: no
     delegate_to: localhost
+    failed_when: ansible_facts.pool[pool_path].active_member_count <= 1
 
   - name: Patch the system
     yum:
