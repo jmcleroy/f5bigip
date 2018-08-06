@@ -7,6 +7,7 @@
       partition: "Common"
       host: "{{ host_ip }}"
       name: "{{ member_name }}"
+      lb_method: roundrobin
       port: 80
       connection_limit: 100
       rate_limit: 50
