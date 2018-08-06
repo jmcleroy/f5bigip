@@ -2,8 +2,7 @@
 - name: Add node
   bigip_node:
       server: "{{ inventory_hostname }}"
-#      user: "{{ username }}"
-#      password: "{{ F5_PASSWORD }}"
+      validate_certs: no
       state: "present"
       partition: "Common"
       host: "{{ host_ip }}"
