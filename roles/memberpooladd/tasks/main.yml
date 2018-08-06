@@ -2,8 +2,6 @@
 - name: Add pool member
   bigip_pool_member:
       server: "{{ inventory_hostname }}"
-#      user: "{{ user }}"
-#      password: "{{ password }}"
       state: "present"
       pool: "{{ pool_name }}"
       partition: "Common"
