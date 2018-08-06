@@ -1,15 +1,15 @@
 ---
 - name: Add pool member
   bigip_pool_member:
-      server: "{{ inventory_hostname }}"
-      state: "present"
-      pool: "{{ pool_name }}"
-      partition: "Common"
-      host: "{{ host_ip }}"
-      name: "{{ member_name }}"
-      lb_method: round-robin
-      port: 80
-      connection_limit: 100
-      rate_limit: 50
-      ratio: 2
-      validate_certs: "no"
+    server: "{{ inventory_hostname }}"
+    state: "present"
+    pool: "{{ pool_name }}"
+    partition: "Common"
+    host: "{{ host_ip }}"
+    name: "{{ member_name }}"
+    lb_method: round-robin
+    port: 80
+    connection_limit: 100
+    rate_limit: 50
+    ratio: 2
+    validate_certs: "no"

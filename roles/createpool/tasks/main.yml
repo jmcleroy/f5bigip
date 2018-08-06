@@ -5,6 +5,6 @@
       state: "present"
       name: "{{ pool_name }}"
       partition: "Common"
-      lb_method: "least_connection_member"
+      lb_method: "round-robin"
       slow_ramp_time: 120
       validate_certs: "no"
