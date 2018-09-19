@@ -19,7 +19,7 @@
     - name: Remove virtual server
       bigip_virtual_server:
         server: "{{ inventory_hostname }}"
-        state: present
+        state: absent
         name: "{{ virtual_server_name }}"
         destination: "{{ vip_address }}"
         port: 443
