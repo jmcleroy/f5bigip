@@ -1,0 +1,29 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Add virtual server
+      bigip_virtual_server:
+        server: "{{ inventory_hostname }}"
+        state: present
+        name: "{{ virtual_server_name }}"
+        destination: "{{ vip_address }}"
+        port: 443
+        pool: "{{ pool_name }}"
+        snat: Automap
+        validate_certs: "no"
+      when: input_state == 'add'
+
+    - name: Add virtual server
+      bigip_virtual_server:
+        server: "{{ inventory_hostname }}"
+        state: present
+        name: "{{ virtual_server_name }}"
+        destination: "{{ vip_address }}"
+        port: 443
+        pool: "{{ pool_name }}"
+        snat: Automap
+        validate_certs: "no"
+      when: input_state == 'remove'
