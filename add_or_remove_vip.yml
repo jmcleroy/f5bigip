@@ -11,7 +11,7 @@
         name: "{{ virtual_server_name }}"
         destination: "{{ vip_address }}"
         port: 443
-        pool: "{{ pool_name }}"
+#        pool: "{{ pool_name }}"
         snat: Automap
         validate_certs: "no"
       when: input_state == 'add'
@@ -23,7 +23,7 @@
         name: "{{ virtual_server_name }}"
         destination: "{{ vip_address }}"
         port: 443
-        pool: "{{ pool_name }}"
+#        pool: "{{ pool_name }}"
         snat: Automap
         validate_certs: "no"
       when: input_state == 'remove'
