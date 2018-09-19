@@ -9,16 +9,3 @@
     name: "{{ member_name }}"
     monitors:
       - /Common/icmp
-  when: input_state == 'add'
-
-- name: Add node
-  bigip_node:
-    server: "{{ inventory_hostname }}"
-    validate_certs: no
-    state: "absent"
-    partition: "Common"
-    host: "{{ host_ip }}"
-    name: "{{ member_name }}"
-    monitors:
-      - /Common/icmp
-  when: input_state == 'remove'
