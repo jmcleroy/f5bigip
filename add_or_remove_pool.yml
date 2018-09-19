@@ -1,0 +1,27 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Create pool
+      bigip_pool:
+        server: "{{ inventory_hostname }}"
+        state: "present"
+        name: "{{ pool_name }}"
+        partition: "Common"
+        lb_method: "round-robin"
+        slow_ramp_time: 120
+        validate_certs: "no"
+      when: input_state == 'add'
+
+    - name: Create pool
+      bigip_pool:
+        server: "{{ inventory_hostname }}"
+        state: "absent"
+        name: "{{ pool_name }}"
+        partition: "Common"
+        lb_method: "round-robin"
+        slow_ramp_time: 120
+        validate_certs: "no"
+      when: input_state == 'remove'
