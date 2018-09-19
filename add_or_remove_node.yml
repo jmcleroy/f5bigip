@@ -16,7 +16,7 @@
           - /Common/icmp
       when: input_state == 'add'
 
-    - name: Add node
+    - name: remove node
       bigip_node:
         server: "{{ inventory_hostname }}"
         validate_certs: no
