@@ -15,7 +15,7 @@
         validate_certs: "no"
       when: input_state == 'add'
 
-    - name: Create pool
+    - name: Remove pool
       bigip_pool:
         server: "{{ inventory_hostname }}"
         state: "absent"

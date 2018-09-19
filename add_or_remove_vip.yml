@@ -16,7 +16,7 @@
         validate_certs: "no"
       when: input_state == 'add'
 
-    - name: Add virtual server
+    - name: Remove virtual server
       bigip_virtual_server:
         server: "{{ inventory_hostname }}"
         state: present
