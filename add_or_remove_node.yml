@@ -4,26 +4,27 @@
   connection: local
 
   tasks:
-    - name: Add node
-      bigip_node:
-        server: "{{ inventory_hostname }}"
-        validate_certs: no
-        state: "present"
-        partition: "Common"
-        host: "{{ host_ip }}"
-        name: "{{ member_name }}"
-        monitors:
-          - /Common/icmp
-      when: input_state == 'add'
+    - block:
+      - name: Add node
+        bigip_node:
+          server: "{{ inventory_hostname }}"
+          validate_certs: no
+          state: "present"
+          partition: "Common"
+          host: "{{ host_ip }}"
+          name: "{{ member_name }}"
+          monitors:
+            - /Common/icmp
+        when: input_state == 'add'
 
-    - name: remove node
-      bigip_node:
-        server: "{{ inventory_hostname }}"
-        validate_certs: no
-        state: "absent"
-        partition: "Common"
-        host: "{{ host_ip }}"
-        name: "{{ member_name }}"
-        monitors:
-          - /Common/icmp
-      when: input_state == 'remove'
+      - name: remove node
+        bigip_node:
+          server: "{{ inventory_hostname }}"
+          validate_certs: no
+          state: "absent"
+          partition: "Common"
+          host: "{{ host_ip }}"
+          name: "{{ member_name }}"
+          monitors:
+            - /Common/icmp
+        when: input_state == 'remove'
