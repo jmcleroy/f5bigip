@@ -1,0 +1,28 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: Load balance an HTTP application on port 80 on BIG-IP
+      bigiq_application_fasthttp:
+        name: my-app
+        description: Fast HTTP
+        service_environment: bigip1
+        servers:
+          - address: 1.2.3.4
+            port: 8080
+          - address: 5.6.7.8
+            port: 8080
+        inbound_virtual:
+          name: foo
+          address: 2.2.2.2
+          netmask: 255.255.255.255
+          port: 80
+        provider:
+          password: admin
+          server: 192.168.1.245
+          user: admin
+        state: present
+        validate_certs: false
+      delegate_to: localhost
