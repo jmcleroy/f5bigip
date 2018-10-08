@@ -10,10 +10,10 @@
     bigip_device_dns:
       user: admin
       password: admin
-      server: 10.60.254.138
+      server: 192.168.1.89
       name_servers:
-        - "{{ dns1 }}"
-        - "{{ dns2 }}"
+        - "192.168.1.1"
+        - "192.168.1.2"
 
   - name: Set the system auth to TACACS+, default server port
     bigip_device_auth:
@@ -27,6 +27,6 @@
         - 204.153.176.211
       state: present
       use_for_auth: yes
-      server: 10.60.254.138
+      server: 192.168.1.89
       user: admin
       password: admin
