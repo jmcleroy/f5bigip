@@ -1,0 +1,32 @@
+- name: F5 Testing
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  environment:
+    F5_VALIDATE_CERTS: "no"
+  tasks:
+  - name: set dns on
+    bigip_device_dns:
+      user: admin
+      password: admin
+      server: 10.60.254.138
+      name_servers:
+        - "{{ dns1 }}"
+        - "{{ dns2 }}"
+
+  - name: Set the system auth to TACACS+, default server port
+    bigip_device_auth:
+      type: tacacs
+      authentication: use-all-servers
+      protocol_name: ip
+      service_name: ppp
+      secret: keyhere
+      servers:
+        - 204.153.176.210
+        - 204.153.176.211
+      state: present
+      use_for_auth: yes
+      server: 10.60.254.138
+      user: admin
+      password: admin
