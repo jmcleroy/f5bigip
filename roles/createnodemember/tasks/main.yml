@@ -1,8 +1,6 @@
 ---
 - name: Add node
   bigip_node:
-    user: "{{ F5_USER }}"
-    password: "{{ F5_PASSWORD }}"
     server: "{{ inventory_hostname }}"
     validate_certs: no
     state: "present"
