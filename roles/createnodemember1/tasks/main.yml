@@ -2,11 +2,10 @@
 - name: Add node
   bigip_node:
       server: "{{ item.server }}"
-      user: "{{ user }}"
-      password: "{{ password }}"
       state: "present"
       partition: "{{ item.partition }}"
       host: "{{ item.host_ip }}"
       name: "{{ item.member_name }}"
       monitors: "{{ item.monitor }}"
   with_items: "{{ apps }}"
+

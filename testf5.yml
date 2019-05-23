@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: false
+  conneciton: local
+
+  tasks:
+    - name: Add node
+      bigip_node:
+        host: "{{ host_ip }}"
+        name: "{{ host_name }}"
+        validate_certs: no
+        server: "{{ inventory_hostname }}"
