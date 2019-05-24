@@ -10,7 +10,7 @@
 
     - name: Download a new UCS
       bigip_ucs_fetch:
-        src: "cs_{{ inventory_hostname }}.ucs"
+        src: "cs_backup.ucs"
         dest: "/tmp/cs_{{ inventory_hostname }}.ucs"
         create_on_missing: yes
         server: "{{ inventory_hostname }}"
