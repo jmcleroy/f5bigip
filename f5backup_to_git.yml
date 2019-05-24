@@ -7,8 +7,7 @@
     - name: create backup
       bigip_command:
         server: "{{ inventory_hostname }}"
-        commands:
-          - command: save sys ucs cs_backup.ucs
+        commands: save sys ucs cs_backup.ucs
 #            prompt: "/var/local/ucs/cs_backup.ucs: file exists, overwrite it? (y/n)"
 #            answer: 'y'
 
