@@ -14,5 +14,6 @@
         dest: "/tmp/cs_{{ inventory_hostname }}.ucs"
         create_on_missing: yes
         server: "{{ inventory_hostname }}"
+        fail_on_missing: yes
         validate_certs: no
       delegate_to: localhost
