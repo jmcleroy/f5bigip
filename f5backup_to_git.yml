@@ -15,7 +15,7 @@
     - name: Download a new UCS
       bigip_ucs_fetch:
         src: "cs_backup.ucs"
-        dest: "/tmp/cs_{{ inventory_hostname }}.ucs"
+        dest: "{{ playbook_dir }}/cs_{{ inventory_hostname }}.ucs"
         create_on_missing: yes
         server: "{{ inventory_hostname }}"
         fail_on_missing: yes
