@@ -8,8 +8,6 @@
       bigip_command:
         commands:
           - command: save sys ucs cs_backup.ucs
-            prompt: "/var/local/ucs/cs_backup.ucs: file exists, overwrite it? (y/n)"
-            answer: 'y'
 
     - name: Download a new UCS
       bigip_ucs_fetch:
@@ -19,4 +17,12 @@
         server: "{{ inventory_hostname }}"
         fail_on_missing: yes
         validate_certs: no
+      delegate_to: localhost
+
+    - name: Remove uploaded UCS file
+      bigip_ucs:
+        ucs: cs_backup.ucs
+        state: absent
+        validate_certs: no
+        server: "{{ inventory_hostname }}"
       delegate_to: localhost
