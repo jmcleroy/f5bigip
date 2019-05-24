@@ -4,9 +4,9 @@
   gather_facts: false
 
   tasks:
-  #  - name: create backup
-  #    bigip_command:
-  #      commands: tmsh save sys ucs $(echo $HOSTNAME | cut -d'.' -f1)
+    - name: create backup
+      bigip_command:
+        commands: save sys ucs cs_backup.ucs
 
     - name: Download a new UCS
       bigip_ucs_fetch:
