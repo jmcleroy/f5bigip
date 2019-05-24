@@ -8,6 +8,7 @@
       bigip_command:
         server: "{{ inventory_hostname }}"
         commands: save sys ucs cs_backup.ucs
+        transport: cli
 #            prompt: "/var/local/ucs/cs_backup.ucs: file exists, overwrite it? (y/n)"
 #            answer: 'y'
 
