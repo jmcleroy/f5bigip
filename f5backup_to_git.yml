@@ -13,4 +13,5 @@
         src: "cs_{{ inventory_hostname }}.ucs"
         dest: "/tmp/cs_{{ inventory_hostname }}.ucs"
         server: "{{ inventory_hostname }}"
+        validate_certs: no
       delegate_to: localhost
