@@ -9,8 +9,8 @@
         server: "{{ inventory_hostname }}"
         commands:
           - command: save sys ucs cs_backup.ucs
-            prompt: "/var/local/ucs/cs_backup.ucs: file exists, overwrite it? (y/n)"
-            answer: 'y'
+#            prompt: "/var/local/ucs/cs_backup.ucs: file exists, overwrite it? (y/n)"
+#            answer: 'y'
 
     - name: Download a new UCS
       bigip_ucs_fetch:
