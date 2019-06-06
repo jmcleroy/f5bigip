@@ -4,13 +4,17 @@
   gather_facts: false
 
   tasks:
+    - name: create or check that git repo exists
+      git:
+        repo: 'https://github.com/jmcleroy/f5backups.git'
+        dest: /tmp/checkout
+        update: yes
+
     - name: create backup
       bigip_command:
         server: "{{ inventory_hostname }}"
         commands: "save sys ucs cs_backup.ucs"
         validate_certs: no
-#            prompt: "/var/local/ucs/cs_backup.ucs: file exists, overwrite it? (y/n)"
-#            answer: 'y'
 
     - name: Download a new UCS
       bigip_ucs_fetch:
