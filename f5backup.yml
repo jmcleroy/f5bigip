@@ -19,11 +19,11 @@
 #        content: "{{ git_key }}"
 #        dest: "{{ git_temp_file.path }}"
 #
-    - name: Change file ownership, group and permissions
-      file:
-        path: "{{ playbook_dir}}/.ssh/ansible.pem"
-        mode: '0600'
-      delegate_to: localhost
+#    - name: Change file ownership, group and permissions
+#      file:
+#        path: "{{ playbook_dir}}/.ssh/ansible.pem"
+#        mode: '0600'
+#      delegate_to: localhost
 
 
     - name: set repo path
@@ -35,7 +35,7 @@
         repo: "{{ git_url }}"
         dest: "{{ playbook_dir }}/{{ git_repo_path }}"
         accept_hostkey: yes
-        key_file: "{{ playbook_dir }}/.ssh/ansible.pem"
+        key_file: "{{ git_key }}"
 
     - name: create backup
       bigip_command:
