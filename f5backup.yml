@@ -39,3 +39,4 @@
         validate_certs: no
         server: "{{ inventory_hostname }}"
       delegate_to: localhost
+
