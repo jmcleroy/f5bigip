@@ -24,7 +24,7 @@
     - name: Download a new UCS
       bigip_ucs_fetch:
         src: "cs_backup.ucs"
-        dest: "{{ playbook_dir }}/{{ git_repo_path }}/cs_{{ inventory_hostname }}{{ansible_date_time.date}}.ucs"
+        dest: "{{ playbook_dir }}/{{ git_repo_path }}/cs_{{ inventory_hostname }}.ucs"
         create_on_missing: yes
         force: yes
         server: "{{ inventory_hostname }}"
