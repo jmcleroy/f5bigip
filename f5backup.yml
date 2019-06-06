@@ -28,7 +28,7 @@
         repo: "{{ git_url }}"
         dest: "{{ playbook_dir }}/{{ git_repo_path }}"
         accept_hostkey: yes
-        key_file: "/var/lib/awx/projects/_79__f5bigip/.ssh/ansible.pem"
+        key_file: "{{ git_temp_file.path }}"
 
     - name: create backup
       bigip_command:
