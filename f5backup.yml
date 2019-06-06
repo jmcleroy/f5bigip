@@ -4,28 +4,6 @@
   gather_facts: false
 
   tasks:
-#    - name: create direcotry
-#      file:
-#        path: "{{ playbook_dir }}/.ssh"
-#        state: directory
-
-#    - name: create temp file
-#      tempfile:
-#        path: "{{ playbook_dir }}/.ssh"
-#      register: git_temp_file
-#
-#    - name: copy key to temp file
-#      copy:
-#        content: "{{ git_key }}"
-#        dest: "{{ git_temp_file.path }}"
-#
-#    - name: Change file ownership, group and permissions
-#      file:
-#        path: "{{ playbook_dir}}/.ssh/ansible.pem"
-#        mode: '0600'
-#      delegate_to: localhost
-
-
     - name: set repo path
       set_fact:
         git_repo_path: "{{ git_url | regex_search('/(.+).git') | regex_replace('.git', '') }}"
@@ -46,7 +24,7 @@
     - name: Download a new UCS
       bigip_ucs_fetch:
         src: "cs_backup.ucs"
-        dest: "{{ playbook_dir }}/cs_{{ inventory_hostname }}.ucs"
+        dest: "{{ playbook_dir }}/{{ git_repo_path }}/cs_{{ inventory_hostname }}{{ansible_date_time.date}}.ucs"
         create_on_missing: yes
         force: yes
         server: "{{ inventory_hostname }}"
