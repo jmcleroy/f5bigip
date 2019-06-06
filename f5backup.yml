@@ -21,7 +21,7 @@
 #
     - name: Change file ownership, group and permissions
       file:
-        path: '{{ playbook_dir}}'/.ssh/ansible.pem
+        path: "{{ playbook_dir}}/.ssh/ansible.pem"
         mode: '0600'
       delegate_to: localhost
 
