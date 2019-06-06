@@ -75,3 +75,4 @@
       args:
         chdir: "{{ playbook_dir }}/{{ git_repo_path }}"
       register: git_add_status
+      
