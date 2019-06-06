@@ -52,7 +52,7 @@
       register: git_add_status
 
     - name: git commit
-      shell: git config user.name "{{ username }}"
+      shell: git config user.name "'{{ username }}'"
       args:
         chdir: "{{ playbook_dir }}{{ git_repo_path }}"
       ignore_errors: true
