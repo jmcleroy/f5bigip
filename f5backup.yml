@@ -28,7 +28,7 @@
         repo: "{{ git_url }}"
         dest: "{{ playbook_dir }}/{{ git_repo_path }}"
         accept_hostkey: yes
-        key_file: "{{ git_temp_file.path }}"
+        key_file: "{{ git_key}}"
 
     - name: create backup
       bigip_command:
