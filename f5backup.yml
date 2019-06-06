@@ -63,17 +63,19 @@
         chdir: "{{ playbook_dir }}{{ git_repo_path }}"
       ignore_errors: true
 
-    - name: git commit
-      shell: git commit -m "'{{ git_msg }}'"
-      args:
-        chdir: "{{ playbook_dir }}{{ git_repo_path }}"
-      ignore_errors: true
-
     - name: git wrapper
       copy:
         dest: "{{ playbook_dir }}/.ssh/ssh"
         content: "ssh -i {{ git_key }} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $*"
         mode: 0700
+
+    - name: git commit
+      shell: git commit -m "{{ git_msg }}"
+      args:
+        chdir: "{{ playbook_dir }}{{ git_repo_path }}"
+      ignore_errors: true
+      environment:
+        GIT_SSH: "{{ playbook_dir }}/.ssh/ssh"
 
     - name: git push
       shell: git push --force
