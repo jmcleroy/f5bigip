@@ -4,6 +4,21 @@
   gather_facts: false
 
   tasks:
+    - name: create direcotry
+      file:
+        path: "{{ playbook_dir }}/.ssh"
+        state: directory
+
+    - name: create temp file
+      tempfile:
+        path: "{{ playbook_dir }}/.ssh"
+      register: git_temp_file
+
+    - name: copy key to temp file
+      copy:
+        content: "{{ git_key }}"
+        dest: "{{ git_temp_file.path }}"
+
     - name: set repo path
       set_fact:
         git_repo_path: "{{ git_url | regex_search('/(.+).git') | regex_replace('.git', '') }}"
@@ -13,7 +28,7 @@
         repo: "{{ git_url }}"
         dest: "{{ playbook_dir }}/{{ git_repo_path }}"
         accept_hostkey: yes
-        key_file: "{{ gitkey }}"
+        key_file: "{{ git_temp_file.path }}"
 
     - name: create backup
       bigip_command:
