@@ -17,6 +17,7 @@
         src: "cs_backup.ucs"
         dest: "{{ playbook_dir }}/cs_{{ inventory_hostname }}.ucs"
         create_on_missing: yes
+        force: yes
         server: "{{ inventory_hostname }}"
         fail_on_missing: yes
         validate_certs: no
