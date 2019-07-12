@@ -10,3 +10,4 @@
           - all
         server: "{{ inventory_hostname }}"
         validate_certs: "no"
+      register: facts
