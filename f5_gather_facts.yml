@@ -9,3 +9,4 @@
         gather_subset:
           - all
         server: "{{ inventory_hostname }}"
+        validate_certs: "no"
