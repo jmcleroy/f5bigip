@@ -10,4 +10,7 @@
           - all
         server: "{{ inventory_hostname }}"
         validate_certs: "no"
-      register: facts
+
+    - name: Set F5 facts
+      set_fact:
+        f5_facts: "gathered_facts" 
