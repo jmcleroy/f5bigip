@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: False
+  connection: local
+
+  tasks:
+    - name: Collect all BIG-IP facts
+      bigip_device_facts:
+        gather_subset:
+          - all
