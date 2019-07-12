@@ -5,6 +5,7 @@
 
   tasks:
     - name: Collect all BIG-IP facts
+      server: "{{ inventory_hostname }}"
       bigip_device_facts:
         gather_subset:
           - all
