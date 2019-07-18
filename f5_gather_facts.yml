@@ -14,5 +14,5 @@
 
     - name: Set F5 facts
       set_fact:
-        f5_facts: "gathered_facts"
+        f5_facts: "{{ gathered_facts }}"
         cacheable: true
