@@ -9,5 +9,5 @@
     - name: run show version and check to see if output contains BIG-IP
       bigip_command:
         commands: save /sys config file /tmp/{{ inventory_hostname }}.scf no-passphrase
-          server: "{{ inventory_hostname}}"
+      server: "{{ inventory_hostname}}"
       delegate_to: localhost
