@@ -5,6 +5,7 @@
 
   tasks:
     - name: Collect BIG-IP facts
-      bigip_facts:
-        server: "{{ inventory_hostname }}"
-        include: device
+      bigip_device_facts:
+        gather_subset: all
+      server: "{{ inventory_hostname }}""
+      delegate_to: localhost
