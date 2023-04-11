@@ -12,6 +12,7 @@
           server: "{{ inventory_hostname }}"
           validate_certs: "no"
       register: gathered_facts
+      delegate_to: localhost
 
     - name: Set F5 facts
       set_fact:
