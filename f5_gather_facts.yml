@@ -8,8 +8,8 @@
       bigip_device_facts:
         gather_subset:
           - all
-        server: "{{ inventory_hostname }}"
-        validate_certs: "no"
+        #server: "{{ inventory_hostname }}"
+        #validate_certs: "no"
       register: gathered_facts
 
     - name: Set F5 facts
